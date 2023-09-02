@@ -49,7 +49,7 @@ def is_open_ai_key_valid(openai_api_key) -> bool:
         return False
     try:
         openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
+            model="gpt-3.5-turbo-16k",
             messages=[{"role": "user", "content": "test"}],
             api_key=openai_api_key,
         )
