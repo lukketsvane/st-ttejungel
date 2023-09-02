@@ -26,7 +26,7 @@ class FakeVectorStore(VectorStore):
         self.texts: List[str] = texts
 
     def add_texts(
-        self, texts: Iterable[str], metadatas: List[dict] | None = None, **kwargs: Any
+        self, texts: Iterable[str], metadatas: Optional[List[dict]] = None, **kwargs: Any
     ) -> List[str]:
         self.texts.extend(texts)
         return self.texts
