@@ -7,6 +7,7 @@ from langchain.chat_models.fake import FakeListChatModel
 from typing import Optional
 
 
+
 class FakeChatModel(FakeListChatModel):
     def __init__(self, **kwargs):
         responses = ["The answer is 42. SOURCES: 1, 2, 3, 4"]
