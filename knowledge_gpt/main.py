@@ -1,7 +1,13 @@
+import os
+from dotenv import load_dotenv
 import streamlit as st
+import io
+from reportlab.lib.pagesizes import letter
+from reportlab.lib import colors
+from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+from reportlab.platypus import SimpleDocTemplate, Paragraph, ListFlowable, ListItem
 
 from knowledge_gpt.components.sidebar import sidebar
-
 from knowledge_gpt.ui import (
     wrap_doc_in_html,
     is_query_valid,
@@ -9,63 +15,69 @@ from knowledge_gpt.ui import (
     is_open_ai_key_valid,
     display_file_read_error,
 )
-
 from knowledge_gpt.core.caching import bootstrap_caching
-
-from knowledge_gpt.core.parsing import read_file
+from knowledge_gpt.core.parsing import read_file, File
 from knowledge_gpt.core.chunking import chunk_file
 from knowledge_gpt.core.embedding import embed_files
 from knowledge_gpt.core.qa import query_folder
 
+class CombinedFile(File):
+    @classmethod
+    def from_bytes(cls, file):
+        pass
+
+load_dotenv()
 EMBEDDING = "openai"
 VECTOR_STORE = "faiss"
 MODEL = "openai"
 
-# For testing
-# EMBEDDING, VECTOR_STORE, MODEL = ["debug"] * 3
+def on_send_inn(selected_schemes):
+    print("Selected cultural support schemes:", selected_schemes)
 
-st.set_page_config(page_title="KnowledgeGPT", page_icon="📖", layout="wide")
-st.header("📖KnowledgeGPT")
+st.set_page_config(page_title="StøtteJungelen", page_icon="📖", layout="wide")
+css = '''<style> /* CSS content here */ </style>'''
+st.markdown(css, unsafe_allow_html=True)
 
-# Enable caching for expensive functions
 bootstrap_caching()
 
-sidebar()
+uploaded_files = sidebar(on_send_inn)
+openai_api_key = os.environ.get("OPENAI_API_KEY")
 
-openai_api_key = st.session_state.get("OPENAI_API_KEY")
+with st.form(key="qa_form"):
+    col1, col2 = st.columns(2)
+    fornavn = col1.text_input("Fornavn", "Steinar")
+    etternavn = col1.text_input("Etternavn", "Raknes")
+    adresse = col1.text_input("Adresse", "Bestumveien 5b")
+    postnummer = col1.text_input("Postnummer", "0281")
+    poststed = col1.text_input("Poststed", "Oslo")
+    prosjekttype = col2.selectbox("prosjekttype", ["Musikk", "Annet"])
+    query = col2.text_area("Beskriv prosjektet ditt.")
+    submit = st.form_submit_button("Send inn")
 
+if submit:
+    st.markdown(f"### Kontaktinformasjon:")
+    st.markdown(f"- **Søker/tilskuddsmottaker:** {fornavn}")
+    st.markdown(f"- **Fornavn:** {fornavn}")
+    st.markdown(f"- **Etternavn:** {etternavn}")
+    st.markdown(f"- **Adresse:** {adresse}")
+    st.markdown(f"- **Postnummer:** {postnummer}")
+    st.markdown(f"- **Poststed:** {poststed}")
 
-if not openai_api_key:
-    st.warning(
-        "Enter your OpenAI API key in the sidebar. You can get a key at"
-        " https://platform.openai.com/account/api-keys."
-    )
+combined_docs = []
 
+if uploaded_files:
+    for uploaded_file in uploaded_files:
+        try:
+            file = read_file(uploaded_file)
+        except Exception as e:
+            display_file_read_error(e)
+        if not is_file_valid(file):
+            st.stop()
+        combined_docs.extend(file.docs)
 
-uploaded_file = st.file_uploader(
-    "Upload a pdf, docx, or txt file",
-    type=["pdf", "docx", "txt"],
-    help="Scanned documents are not supported yet!",
-)
+    combined_file = CombinedFile(name="combined", id="combined_id", docs=combined_docs)
+    chunked_file = chunk_file(combined_file, chunk_size=300, chunk_overlap=0)
 
-if not uploaded_file:
-    st.stop()
-
-try:
-    file = read_file(uploaded_file)
-except Exception as e:
-    display_file_read_error(e)
-
-chunked_file = chunk_file(file, chunk_size=300, chunk_overlap=0)
-
-if not is_file_valid(file):
-    st.stop()
-
-if not is_open_ai_key_valid(openai_api_key):
-    st.stop()
-
-
-with st.spinner("Indexing document... This may take a while⏳"):
     folder_index = embed_files(
         files=[chunked_file],
         embedding=EMBEDDING,
@@ -73,45 +85,45 @@ with st.spinner("Indexing document... This may take a while⏳"):
         openai_api_key=openai_api_key,
     )
 
-with st.form(key="qa_form"):
-    query = st.text_area("Ask a question about the document")
-    submit = st.form_submit_button("Submit")
-
-
-with st.expander("Advanced Options"):
-    return_all_chunks = st.checkbox("Show all chunks retrieved from vector search")
-    show_full_doc = st.checkbox("Show parsed contents of the document")
-
-
-if show_full_doc:
-    with st.expander("Document"):
-        # Hack to get around st.markdown rendering LaTeX
-        st.markdown(f"<p>{wrap_doc_in_html(file.docs)}</p>", unsafe_allow_html=True)
-
-
 if submit:
-    if not is_query_valid(query):
-        st.stop()
-
-    # Output Columns
-    answer_col, sources_col = st.columns(2)
-
     result = query_folder(
         folder_index=folder_index,
         query=query,
-        return_all=return_all_chunks,
         model=MODEL,
         openai_api_key=openai_api_key,
         temperature=0,
     )
 
-    with answer_col:
-        st.markdown("#### Answer")
-        st.markdown(result.answer)
+    st.markdown("#### Utkast")
+    st.markdown(result.answer)
 
-    with sources_col:
-        st.markdown("#### Sources")
-        for source in result.sources:
-            st.markdown(source.page_content)
-            st.markdown(source.metadata["source"])
-            st.markdown("---")
+    pdf_buffer = io.BytesIO()
+    pdf = SimpleDocTemplate(pdf_buffer, pagesize=letter)
+    
+    styles = getSampleStyleSheet()
+    styles.add(ParagraphStyle(name='ListBullet', parent=styles['BodyText'], spaceAfter=20, bulletIndent=0, leftIndent=20, bulletText='-'))
+    
+    flowables = []
+    
+    for line in result.answer.split('\n'):
+        if line.startswith('# '):
+            flowables.append(Paragraph(line[2:], styles['Heading1']))
+        elif line.startswith('## '):
+            flowables.append(Paragraph(line[3:], styles['Heading2']))
+        elif line.startswith('### '):
+            flowables.append(Paragraph(line[4:], styles['Heading3']))
+        elif line.startswith('- '):
+            flowables.append(ListFlowable([ListItem(Paragraph(line[2:], styles['ListBullet']))]))
+        elif line.startswith('**'):
+            flowables.append(Paragraph(f"<strong>{line[2:-2]}</strong>", styles['BodyText']))
+        else:
+            flowables.append(Paragraph(line, styles['BodyText']))
+    
+    pdf.build(flowables)
+    
+    st.download_button(
+        label="Last ned PDF",
+        data=pdf_buffer.getvalue(),
+        file_name="resultat.pdf",
+        mime="application/pdf",
+    )

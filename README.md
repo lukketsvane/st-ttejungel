@@ -1,5 +1,5 @@
 <h1 align="center">
-📖KnowledgeGPT
+StøtteJungelen
 </h1>
 
 Accurate answers and instant citations for your documents.

@@ -1,43 +1,42 @@
 import streamlit as st
 
-from knowledge_gpt.components.faq import faq
-from dotenv import load_dotenv
-import os
-
-load_dotenv()
-
-
-def sidebar():
+def sidebar(on_send_inn_callback):
+    st.sidebar.title("StøtteJungelen")
     with st.sidebar:
-        st.markdown(
-            "## How to use\n"
-            "1. Enter your [OpenAI API key](https://platform.openai.com/account/api-keys) below🔑\n"  # noqa: E501
-            "2. Upload a pdf, docx, or txt file📄\n"
-            "3. Ask a question about the document💬\n"
-        )
-        api_key_input = st.text_input(
-            "OpenAI API Key",
-            type="password",
-            placeholder="Paste your OpenAI API key here (sk-...)",
-            help="You can get your API key from https://platform.openai.com/account/api-keys.",  # noqa: E501
-            value=os.environ.get("OPENAI_API_KEY", None)
-            or st.session_state.get("OPENAI_API_KEY", ""),
-        )
-
-        st.session_state["OPENAI_API_KEY"] = api_key_input
-
         st.markdown("---")
-        st.markdown("# About")
         st.markdown(
-            "📖KnowledgeGPT allows you to ask questions about your "
-            "documents and get accurate answers with instant citations. "
+            "## Slik bruker du tjenesten\n"
+            "1. Skriv inn din informasjon\n"
+            "2. Last opp PDF, docx, eller txt fil📄\n"
+            "3. Send inn og få et utkast til søknaden din 💬\n"
         )
-        st.markdown(
-            "This tool is a work in progress. "
-            "You can contribute to the project on [GitHub](https://github.com/mmz-001/knowledge_gpt) "  # noqa: E501
-            "with your feedback and suggestions💡"
-        )
-        st.markdown("Made by [mmz_001](https://twitter.com/mm_sasmitha)")
+        
+           # Add a divider
         st.markdown("---")
+        
+ 
+    st.sidebar.markdown("### Velg kulturelle støtteordninger")
 
-        faq()
+    schemes = [
+        "Kulturfond",
+        "Filmfond",
+        "Musikkfond",
+        "Kunstfond"
+    ]
+    
+    selected_schemes = st.sidebar.multiselect(
+        " ",
+        schemes
+    )
+    
+    on_send_inn_callback(selected_schemes)
+
+    uploaded_files = st.sidebar.file_uploader(
+        "",
+        type=["pdf", "zip", "txt"],
+        accept_multiple_files=True,
+        help="",
+        key="sidebar_file_uploader"  # unique key
+    )
+    
+    return uploaded_files  # Return uploaded_files

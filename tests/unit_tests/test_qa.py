@@ -16,27 +16,27 @@ def test_getting_sources_from_answer():
             name="file1",
             id="1",
             docs=[
-                Document(page_content="1", metadata={"source": "1"}),
-                Document(page_content="2", metadata={"source": "2"}),
+                Document(page_content="1", metadata={"kilder": "1"}),
+                Document(page_content="2", metadata={"kilder": "2"}),
             ],
         ),
         FakeFile(
             name="file2",
             id="2",
             docs=[
-                Document(page_content="3", metadata={"source": "3"}),
-                Document(page_content="4", metadata={"source": "4"}),
+                Document(page_content="3", metadata={"kilder": "3"}),
+                Document(page_content="4", metadata={"kilder": "4"}),
             ],
         ),
     ]
     folder_index = FolderIndex(files=files, index=FakeVectorStore(texts=[]))
 
-    answer = "This is the answer. SOURCES: 1, 2, 3, 4"
+    answer = "Her er utkastet. KILDER: 1, 2, 3, 4"
 
     sources = get_sources(answer, folder_index)
 
     assert len(sources) == 4
-    assert sources[0].metadata["source"] == "1"
-    assert sources[1].metadata["source"] == "2"
-    assert sources[2].metadata["source"] == "3"
-    assert sources[3].metadata["source"] == "4"
+    assert sources[0].metadata["kilder"] == "1"
+    assert sources[1].metadata["kilder"] == "2"
+    assert sources[2].metadata["kilder"] == "3"
+    assert sources[3].metadata["kilder"] == "4"

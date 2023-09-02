@@ -1,30 +1,45 @@
 # flake8: noqa
 from langchain.prompts import PromptTemplate
 
-## Use a shorter template to reduce the number of tokens in the prompt
-template = """Create a final answer to the given questions using the provided document excerpts(in no particular order) as references. ALWAYS include a "SOURCES" section in your answer including only the minimal set of sources needed to answer the question. If you are unable to answer the question, simply state that you do not know. Do not attempt to fabricate an answer and leave the SOURCES section empty.
+template = """Fyll ut skjemaet ved å bruke informasjonen i de vedlagte dokumentene som referanse. ALLTID inkluder en "KILDER" seksjon i svaret ditt som inkluderer bare det minimale settet med kilder som trengs for å svare på spørsmålet. Hvis du ikke kan svare på spørsmålet, angi rett og slett at du ikke vet. Vær kreativ, skriv detaljert og omfattende. Prosjektet skal være inspirert fra konteksten / kilden, og være dypt kreativ, interresant og unik. bruk markdown formattering, '## ... " og  '# ...' indikerer overskrift. Prosjektbeskrivelse skal inneholde 4000< tegn. Kunstnerisk målsetting skal inneholde 3000< tegn. erstatt [tittel] med et passende navn på prosjektet.
 
----------
+## SKJEMA: Fond for lyd og bilde prosjektstøtte
+=========
+# tittel
+Sjanger:
+Medvirkende:
 
-QUESTION: What  is the purpose of ARPA-H?
+## Kunstnerisk målsetting:
+
+
+## Prosjektbeskrivelse:
+
+## Gjennomføringsplan:
+Har du tidligere søkt Fond for lyd og bilde til dette prosjektet? (Ja/Nei):
+
+Prosjektperiode Fra dato:
+Til dato:
+Aktivitet Fra dato:
+Til dato:
+Sammendrag av prosjektet ( 750 tegn):
+
+Budsjett:
+
+Søknadsbeløp:
+Andre tilskudd:
+Offentlige tilskudd:
+Andre inntekter:
+Vedlegg.
 =========
-Content: More support for patients and families. \n\nTo get there, I call on Congress to fund ARPA-H, the Advanced Research Projects Agency for Health. \n\nIt’s based on DARPA—the Defense Department project that led to the Internet, GPS, and so much more.  \n\nARPA-H will have a singular purpose—to drive breakthroughs in cancer, Alzheimer’s, diabetes, and more.
-Source: 1-32
-Content: While we’re at it, let’s make sure every American can get the health care they need. \n\nWe’ve already made historic investments in health care. \n\nWe’ve made it easier for Americans to get the care they need, when they need it. \n\nWe’ve made it easier for Americans to get the treatments they need, when they need them. \n\nWe’ve made it easier for Americans to get the medications they need, when they need them.
-Source: 1-33
-Content: The V.A. is pioneering new ways of linking toxic exposures to disease, already helping  veterans get the care they deserve. \n\nWe need to extend that same care to all Americans. \n\nThat’s why I’m calling on Congress to pass legislation that would establish a national registry of toxic exposures, and provide health care and financial assistance to those affected.
-Source: 1-30
-=========
-FINAL ANSWER: The purpose of ARPA-H is to drive breakthroughs in cancer, Alzheimer’s, diabetes, and more.
+SLUTTSVAR:
 SOURCES: 1-32
 
----------
-
-QUESTION: {question}
+BESKRIVELSE: {question}
 =========
-{summaries}
+KONTEKST: {summaries}
 =========
-FINAL ANSWER:"""
+SLUTTSVAR:
+"""
 
 STUFF_PROMPT = PromptTemplate(
     template=template, input_variables=["summaries", "question"]

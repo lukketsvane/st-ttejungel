@@ -20,19 +20,21 @@ def query_folder(
     model: str = "openai",
     **model_kwargs: Any,
 ) -> AnswerWithSources:
-    """Queries a folder index for an answer.
+    """Spør en mappeindeks for et svar.
 
     Args:
-        query (str): The query to search for.
-        folder_index (FolderIndex): The folder index to search.
-        return_all (bool): Whether to return all the documents from the embedding or
-        just the sources for the answer.
-        model (str): The model to use for the answer generation.
-        **model_kwargs (Any): Keyword arguments for the model.
+        spørsmål (str): Spørsmålet å søke etter.
+        mappeindeks (FolderIndex): Indeksen av mappen å søke i.
+        returner_alle (bool): Om alle dokumenter fra indekseringen skal returneres eller
+        bare kildene til svaret.
+        modell (str): Modellen som skal brukes for å generere svaret.
+        maks_token (int): Maksimalt antall token for den genererte teksten.
+        **modell_kwargs (Any): Nøkkelordargumenter for modellen.
 
     Returns:
-        AnswerWithSources: The answer and the source documents.
+        SvarMedKilder (AnswerWithSources): Svaret og kildedokumentene.
     """
+
     supported_models = {
         "openai": ChatOpenAI,
         "debug": FakeChatModel,
