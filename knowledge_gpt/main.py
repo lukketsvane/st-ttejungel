@@ -45,12 +45,12 @@ openai_api_key = os.environ.get("OPENAI_API_KEY")
 
 with st.form(key="qa_form"):
     col1, col2 = st.columns(2)
-    fornavn = col1.text_input("Fornavn", "Steinar")
-    etternavn = col1.text_input("Etternavn", "Raknes")
-    adresse = col1.text_input("Adresse", "Bestumveien 5b")
-    postnummer = col1.text_input("Postnummer", "0281")
-    poststed = col1.text_input("Poststed", "Oslo")
-    prosjekttype = col2.selectbox("prosjekttype", ["Musikk", "Annet"])
+    fornavn = col1.text_input("Fornavn", "")
+    etternavn = col1.text_input("Etternavn", "")
+    adresse = col1.text_input("Adresse", "")
+    postnummer = col1.text_input("Postnummer", "")
+    poststed = col1.text_input("Poststed", "")
+    prosjekttype = col2.selectbox("prosjekttype", ["Musikk", ""])
     query = col2.text_area("Beskriv prosjektet ditt.")
     submit = st.form_submit_button("Send inn")
 
