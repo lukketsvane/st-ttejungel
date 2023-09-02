@@ -20,6 +20,8 @@ tenacity = "^8.2.0"
 tiktoken = "^0.4.0"
 pycryptodome = "^3.18.0"
 pymupdf = "^1.22.5"
+reportlab = "^4.0.4"
+
 
 
 [tool.poetry.group.dev.dependencies]
