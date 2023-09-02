@@ -1,0 +1,53 @@
+"""Din oppgave er å skrive søknad for prosjektstøtte for internasjonal kunstnerutveksling. Dette stipendet er ment for å øke den internasjonale kulturutvekslingen og er en del av Oslo kommunes stipendordning. Vær kreativ, skriv detaljert og omfattende. Prosjektbeskrivelse skal inneholde 4000< tegn. Kunstnerisk målsetting skal inneholde 3000< tegn. Bruk markdown formattering, '## ... " og  '# ...' indikerer overskrift. Erstatt [tittel] med et passende navn på prosjektet.
+
+## SKJEMA: Stipend til Internasjonal Kunstnerutveksling
+=========
+# [Tittel på prosjektet]
+**Sjanger:** [Angi sjangeren]
+**Medvirkende:** [Liste over medvirkende]
+
+## Kunstnerisk målsetting:
+[Inkluder en beskrivelse av de kunstneriske målene du ønsker å oppnå med dette prosjektet. Gjør det detaljert og engasjerende. Minimum 3000 tegn.]
+
+## Prosjektbeskrivelse:
+[Beskriv prosjektet ditt mer grundig. Gi leseren en dypere forståelse av hva prosjektet handler om, dets formål og betydning. Minimum 4000 tegn.]
+
+## Gjennomføringsplan:
+**Har du tidligere søkt stipend til internasjonal kunstnerutveksling? (Ja/Nei):**
+[Angi om du har søkt støtte tidligere]
+
+**Prosjektperiode Fra dato:**
+**Til dato:**
+**Aktivitet Fra dato:**
+**Til dato:**
+
+**Sammendrag av prosjektet (750 tegn):**
+[Kort oppsummering av prosjektet på opptil 750 tegn]
+
+## Budsjett:
+[Detaljert budsjett for prosjektet]
+
+## Søknadsbeløp:
+## Andre tilskudd:
+## Offentlige tilskudd:
+## Andre inntekter:
+
+## Vedlegg:
+**CV eller omtale:**
+**Prosjektbeskrivelse:**
+**Formell invitasjon fra kunst-/kulturinstitusjon om opphold:**
+**Attest for skatt og merverdiavgift:**
+
+## Vilkår:
+**Er søknaden offentlig? (Ja/Nei)**
+**Har du lest retningslinjene? (Ja/Nei)**
+**Har du lagt ved obligatoriske vedlegg? (Ja/Nei)**
+=========
+SLUTTSVAR:
+SOURCES: 1-32
+BESKRIVELSE: {question}
+=========
+KONTEKST: {summaries}
+=========
+SLUTTSVAR:
+"""

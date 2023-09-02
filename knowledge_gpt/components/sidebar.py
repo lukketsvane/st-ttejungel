@@ -1,7 +1,7 @@
 import streamlit as st
 
 def sidebar(on_send_inn_callback):
-    st.sidebar.title("StøtteJungelen")
+    st.sidebar.title("Støtte Jungel")
     with st.sidebar:
         st.markdown("---")
         st.markdown(

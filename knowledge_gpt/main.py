@@ -21,6 +21,25 @@ from knowledge_gpt.core.chunking import chunk_file
 from knowledge_gpt.core.embedding import embed_files
 from knowledge_gpt.core.qa import query_folder
 
+
+current_directory = os.path.dirname(os.path.realpath(__file__))
+
+with open(os.path.join(current_directory, "template-1.txt"), "r") as f:
+    template_1 = f.read()
+
+with open(os.path.join(current_directory, "template-2.txt"), "r") as f:
+    template_2 = f.read()
+    
+with open(os.path.join(current_directory, "template-3.txt"), "r") as f:
+    template_3 = f.read()
+
+STOTTEORDNING_TEMPLATES = {
+    'Fond for lyd og bilde': template_1,
+    'Drammen Kommunes Kunstnerstipend': template_2,
+    'Stipend til Internasjonal Kunstnerutveksling': template_3,
+}
+
+
 class CombinedFile(File):
     @classmethod
     def from_bytes(cls, file):
@@ -32,7 +51,12 @@ VECTOR_STORE = "faiss"
 MODEL = "openai"
 
 def on_send_inn(selected_schemes):
+    if isinstance(selected_schemes, list):
+        selected_templates = [STOTTEORDNING_TEMPLATES.get(scheme, "No Template") for scheme in selected_schemes]
+    else:
+        selected_templates = STOTTEORDNING_TEMPLATES.get(selected_schemes, "No Template")
     print("Selected cultural support schemes:", selected_schemes)
+    print("Selected template(s):", selected_templates)
 
 st.set_page_config(page_title="StøtteJungelen", page_icon="📖", layout="wide")
 css = '''<style> /* CSS content here */ </style>'''
@@ -51,6 +75,7 @@ with st.form(key="qa_form"):
     postnummer = col1.text_input("Postnummer", "0281")
     poststed = col1.text_input("Poststed", "Oslo")
     prosjekttype = col2.selectbox("prosjekttype", ["Musikk", "Annet"])
+    selected_schemes = col2.selectbox("Velg støtteordning", list(STOTTEORDNING_TEMPLATES.keys()))
     query = col2.text_area("Beskriv prosjektet ditt.")
     submit = st.form_submit_button("Send inn")
 
