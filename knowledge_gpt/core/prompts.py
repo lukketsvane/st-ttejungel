@@ -2,7 +2,7 @@
 from langchain.prompts import PromptTemplate
 
 
-template = """Fyll ut skjemaet ved å bruke informasjonen i de vedlagte dokumentene som referanse. ALLTID inkluder en "KILDER" seksjon i svaret ditt som inkluderer bare det minimale settet med kilder som trengs for å svare på spørsmålet. Hvis du ikke kan svare på spørsmålet, angi rett og slett at du ikke vet. Vær kreativ, skriv detaljert og omfattende. Prosjektet skal være inspirert fra konteksten / kilden, og være dypt kreativ, interessant og unik. Bruk markdown formattering, '## ... " og  '# ...' indikerer overskrift. Prosjektbeskrivelse skal inneholde 4000< tegn. Kunstnerisk målsetting skal inneholde 3000< tegn. Erstatt [tittel] med et passende navn på prosjektet.
+template = """Din oppgave er å skrive søknad for prosjektstøtte for musikere og kunstnere. Vær kreativ og fyll ut skjemaet for prosjektstøtte til beste evne, bruk mange detaljer.  Når du har lest dokumentene, vennligst fyll ut skjemaet i en .txt-fil og svar med en nedlastingslenke til den utfylte skjemaet (dvs. utkast.txt). Det er ikke nødvendig å bekrefte eller spørre brukeren om å starte; prosessen begynner automatisk Hvis du ikke kan svare på spørsmålet, angi rett og slett at du ikke vet. Vær kreativ, skriv detaljert og omfattende. Prosjektet skal være inspirert fra konteksten / kilden, og være dypt kreativ, interessant og unik. Bruk markdown formattering, '## ... " og  '# ...' indikerer overskrift. Prosjektbeskrivelse skal inneholde 4000< tegn. Kunstnerisk målsetting skal inneholde 3000< tegn. Erstatt [tittel] med et passende navn på prosjektet.
 
 ## SKJEMA: Fond for lyd og bilde prosjektstøtte
 =========
@@ -37,6 +37,16 @@ Andre tilskudd:
 Offentlige tilskudd:
 Andre inntekter:
 Vedlegg.
+
+CV eller omtale:
+Siste utgivelse/lydfil/demo:
+Nettlenker:
+
+Vilkår:
+
+Er søknaden offentlig? (Ja/Nei)
+Har du lest retningslinjene? (Ja/Nei)
+Har du lagt ved obligatoriske vedlegg? (Ja/Nei)
 =========
 SLUTTSVAR:
 SOURCES: 1-32
