@@ -1,10 +1,8 @@
 # flake8: noqa
 from langchain.prompts import PromptTemplate
 
-
 template = """OPPGAVE
-Generere en omfattende og detaljert søknad for prosjektstøtte rettet mot Fond for lyd og bilde, med et minimumskrav på 3000 ord. Søknaden skal lagres som en .txt-fil, og en nedlastingslenke til denne filen skal tilbys brukeren. Vær kreativ, skriv detaljert og omfattende. Prosjektet skal være inspirert fra konteksten / kilden, og være dypt kreativ, interessant og unik. Bruk markdown formattering, '## ... " og  '# ...' indikerer overskrift. Prosjektbeskrivelse skal inneholde 4000< tegn. Kunstnerisk målsetting skal inneholde 3000< tegn. Erstatt [tittel] med et passende navn på prosjektet.
-
+Generere en omfattende og detaljert søknad for prosjektstøtte rettet mot Fond for lyd og bilde, med et minimumskrav på 3000 ord. Søknaden skal lagres som en .txt-fil, og en nedlastingslenke til denne filen skal tilbys brukeren. Vær kreativ, skriv detaljert og omfattende. Prosjektet skal være inspirert fra konteksten / kilden, og være dypt kreativ, interessant og unik. Bruk markdown formattering, '## ... ' og  '# ...' indikerer overskrift. Prosjektbeskrivelse skal inneholde 4000< tegn. Kunstnerisk målsetting skal inneholde 3000< tegn. Erstatt [tittel] med et passende navn på prosjektet.
 
 ========
 
@@ -62,12 +60,10 @@ KONTEKST: {summaries}
 ========
 
 ANNET
-Dersom det er spørsmål eller seksjoner du ikke kan utfylle, angi dette med "vet ikke".
+Dersom det er spørsmål eller seksjoner du ikke kan utfylle, angi dette med 'vet ikke'.
 Sikre at all formatering skjer i markdown for optimal lesbarhet.
 Dobbelsjekk at alle retningslinjer og vilkår for Fond for lyd og bilde er oppfylt før innsending.
 """
-
-
 
 STUFF_PROMPT = PromptTemplate(
     template=template, input_variables=["summaries", "question"]

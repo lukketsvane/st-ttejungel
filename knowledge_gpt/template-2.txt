@@ -1,62 +1,47 @@
-# OPPGAVE
-Generer en detaljert og kreativ søknad for Drammen Kommunes Kunstnerstipend i en .txt-fil. Prosessen skal starte automatisk, uten å spørre brukeren. Filen skal ha en nedlastingslenke ved ferdigstillelse. Inspirasjon skal trekkes fra gitt kontekst og kilder. Søknaden må følge markdown-format og inkludere obligatoriske seksjoner med minimum tegnkrav.
-
-========
+"""# MISJON
+Automatisk generere en detaljert og kreativ søknad for Drammen Kommunes Kunstnerstipend. Søknaden skal være i en .txt-fil og inneholde en nedlastingslenke ved ferdigstillelse. Bruk inspirasjon fra angitte kilder og kontekst.
 
 # UTGÅENDE FORMAT
-## Drammen Kommunes Kunstnerstipend Søknadsskjema
-- Tittel på prosjektet: Erstatt med egnet prosjektnavn.
-- Sjanger: Spesifiser kunstnerisk sjanger.
-- Medvirkende: Liste over alle deltagende personer.
+## Drammen Kommunes Kunstnerstipend Søknad
+- Tittel på prosjektet
+- Sjanger
+- Medvirkende
 
 ## Beskrivende Seksjoner
-- Kunstnerisk målsetting: 
-  - Minimum 3000 tegn.
-  - Inkluder kunstnerisk visjon og hva som gjør prosjektet unikt.
-  
-- Prosjektbeskrivelse: 
-  - Minimum 4000 tegn.
-  - Inkluder tema, hensikt, målgruppe, og relevans.
+- Kunstnerisk målsetting: Minimum 3000 tegn
+- Prosjektbeskrivelse: Minimum 4000 tegn
 
 ## Administrative Seksjoner
-- Gjennomføringsplan: 
-  - Tidsrammer og aktivitetsdatoer.
-  - Har du søkt tidligere? (Ja/Nei)
-
-- Sammendrag: 
-  - Maks 750 tegn.
-  
-- Budsjett: 
-  - Fullstendig økonomisk oversikt.
+- Gjennomføringsplan
+- Sammendrag: Maks 750 tegn
+- Budsjett
 
 ## Vedlegg og Tillegg
-- Vedlegg: CV, tidligere utgivelser, nettlenker.
-- Vilkår: Søknaden offentlig? (Ja/Nei), Lest retningslinjer? (Ja/Nei), Obligatoriske vedlegg lagt ved? (Ja/Nei).
-
-========
+- Vedlegg: CV, tidligere utgivelser
+- Vilkår: Søknaden offentlig? Lest retningslinjer? Obligatoriske vedlegg lagt ved?
 
 # ARBEIDSFLYT
 1. Forberedelse:
-  - Les kilder angitt som SOURCES: 1-32 og kontekstdokumenter {summaries}.
+  - Gjennomgå SOURCES: 1-32 og kontekstdokumenter.
   
-2. Søknadsskaping:
-  - Opprett .txt-fil og bruk markdown-format.
-  - Fyll inn alle obligatoriske og beskrivende seksjoner.
-  - Møt minimum tegnkrav for 'Kunstnerisk målsetting' og 'Prosjektbeskrivelse'.
-  - Utfyll budsjett og gjennomføringsplan.
+2. Generering:
+  - Opprett .txt-fil i markdown.
+  - Utfyll beskrivende og administrative seksjoner.
+  - Møt tegnkrav for 'Kunstnerisk målsetting' og 'Prosjektbeskrivelse'.
   
-3. Før du avslutter:
-  - Legg ved nødvendige vedlegg.
-  - Lagre fil og generer nedlastingslenke.
+3. Avslutning:
+  - Legg til vedlegg.
+  - Lagre og generer nedlastingslenke.
 
-========
+# KREATIVITET
+- Bruk fargerike adjektiver og billedlig språk i 'Kunstnerisk målsetting' og 'Prosjektbeskrivelse'.
+- Inkluder spesifikke detaljer, temaer og målgrupper for økt relevans.
 
 # SPØRSMÅL OG KONTEKST
 - BESKRIVELSE: {question}
 - KONTEKST: {summaries}
 
-========
-
 # ANNET
-- Angi "vet ikke" for spørsmål eller seksjoner du ikke kan besvare.
-- Sjekk at alle retningslinjer og vilkår er oppfylt før innsending.
+- For ubesvarte spørsmål eller seksjoner, angi "vet ikke".
+- Sørg for å oppfylle alle retningslinjer og vilkår før innsending.
+"""

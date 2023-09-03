@@ -11,9 +11,9 @@ from knowledge_gpt.core.parsing import read_file, File
 from knowledge_gpt.core.chunking import chunk_file
 from knowledge_gpt.core.embedding import embed_files
 from knowledge_gpt.core.qa import query_folder
-from knowledge_gpt.ui import is_file_valid  # Add this import line at the top with other imports
+from knowledge_gpt.ui import is_file_valid
 
-class CombinedFile(File):  # Re-introduce the CombinedFile class
+class CombinedFile(File):
     @classmethod
     def from_bytes(cls, file):
         pass
@@ -25,13 +25,13 @@ MODEL = "openai"
 
 current_directory = os.path.dirname(os.path.realpath(__file__))
 
-with open(os.path.join(current_directory, "template-1.txt"), "r") as f:
+with open(os.path.join(current_directory, "template-1.txt"), "r", encoding='utf-8') as f:
     template_1 = f.read()
 
-with open(os.path.join(current_directory, "template-2.txt"), "r") as f:
+with open(os.path.join(current_directory, "template-2.txt"), "r", encoding='utf-8') as f:
     template_2 = f.read()
 
-with open(os.path.join(current_directory, "template-3.txt"), "r") as f:
+with open(os.path.join(current_directory, "template-3.txt"), "r", encoding='utf-8') as f:
     template_3 = f.read()
 
 STOTTEORDNING_TEMPLATES = {
@@ -41,20 +41,17 @@ STOTTEORDNING_TEMPLATES = {
 }
 
 def on_send_inn(selected_schemes):
-    if isinstance(selected_schemes, list):
-        selected_templates = [STOTTEORDNING_TEMPLATES.get(scheme, "No Template") for scheme in selected_schemes]
-    else:
-        selected_templates = STOTTEORDNING_TEMPLATES.get(selected_schemes, "No Template")
+    return STOTTEORDNING_TEMPLATES.get(selected_schemes, "No Template")
+
 
 bootstrap_caching()
 
 st.set_page_config(page_title="StøtteJungelen", page_icon="📖", layout="wide")
 
-# Add this line just after st.set_page_config()
 css = '''<style>
     .stText, .stMarkdown, .stTextArea {
-        padding-left: 20%;
-        padding-right: 20%;
+        padding-left: 10%;
+        padding-right: 10%;
     }
 </style>'''
 st.markdown(css, unsafe_allow_html=True)
@@ -62,23 +59,21 @@ st.markdown(css, unsafe_allow_html=True)
 openai_api_key = os.environ.get("OPENAI_API_KEY")
 
 uploaded_files, selected_schemes, submit = sidebar(on_send_inn)
+selected_templates = on_send_inn(selected_schemes)  # This line selects the template based on the scheme
+
+
 query = st.text_area("Beskriv prosjektet ditt.")
 combined_docs = []
 
 if uploaded_files:
     for uploaded_file in uploaded_files:
-        try:
-            file = read_file(uploaded_file)
-        except Exception as e:
-            st.stop()
+        file = read_file(uploaded_file)
         if not is_file_valid(file):
             st.stop()
         combined_docs.extend(file.docs)
 
     combined_file = CombinedFile(name="combined", id="combined_id", docs=combined_docs)
-
     chunked_file = chunk_file(combined_file, chunk_size=300, chunk_overlap=0)
-
     folder_index = embed_files(
         files=[chunked_file],
         embedding=EMBEDDING,
@@ -89,12 +84,12 @@ if uploaded_files:
 if submit:
     result = query_folder(
         folder_index=folder_index,
-        query=query,
+        query=selected_templates,  # This line uses the selected template
         model=MODEL,
         openai_api_key=openai_api_key,
         temperature=0,
     )
-
+    
     st.markdown("#### Utkast")
     st.markdown(result.answer)
 
@@ -128,6 +123,3 @@ if submit:
         file_name="resultat.pdf",
         mime="application/pdf",
     )
-
-
-
