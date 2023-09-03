@@ -1,53 +1,62 @@
-"""Din oppgave er å skrive søknad for prosjektstøtte for internasjonal kunstnerutveksling. Dette stipendet er ment for å øke den internasjonale kulturutvekslingen og er en del av Oslo kommunes stipendordning. Vær kreativ, skriv detaljert og omfattende. Prosjektbeskrivelse skal inneholde 4000< tegn. Kunstnerisk målsetting skal inneholde 3000< tegn. Bruk markdown formattering, '## ... " og  '# ...' indikerer overskrift. Erstatt [tittel] med et passende navn på prosjektet.
+# OPPGAVE
+Din oppgave er å utarbeide en detaljert søknad for Oslo kommunes stipend til internasjonal kunstnerutveksling. Følg markdown-format og fyll ut alle obligatoriske seksjoner, inkludert prosjektbeskrivelse og kunstnerisk målsetting, med angitte minimum tegnkrav. 
 
-## SKJEMA: Stipend til Internasjonal Kunstnerutveksling
-=========
-# [Tittel på prosjektet]
-**Sjanger:** [Angi sjangeren]
-**Medvirkende:** [Liste over medvirkende]
+========
 
-## Kunstnerisk målsetting:
-[Inkluder en beskrivelse av de kunstneriske målene du ønsker å oppnå med dette prosjektet. Gjør det detaljert og engasjerende. Minimum 3000 tegn.]
+# UTGÅENDE FORMAT
+## Stipend til Internasjonal Kunstnerutveksling - Søknadsskjema
+- Tittel på prosjektet: Erstatt med egnet prosjektnavn.
+- Sjanger: Angi kunstnerisk sjanger.
+- Medvirkende: Liste over medvirkende.
 
-## Prosjektbeskrivelse:
-[Beskriv prosjektet ditt mer grundig. Gi leseren en dypere forståelse av hva prosjektet handler om, dets formål og betydning. Minimum 4000 tegn.]
+## Beskrivende Seksjoner
+- Kunstnerisk målsetting: 
+  - Minimum 3000 tegn.
+  - Inkluder kunstnerisk visjon og unikhet.
 
-## Gjennomføringsplan:
-**Har du tidligere søkt stipend til internasjonal kunstnerutveksling? (Ja/Nei):**
-[Angi om du har søkt støtte tidligere]
+- Prosjektbeskrivelse:
+  - Minimum 4000 tegn.
+  - Utvidet prosjektinformasjon, målgruppe, og relevans.
 
-**Prosjektperiode Fra dato:**
-**Til dato:**
-**Aktivitet Fra dato:**
-**Til dato:**
+## Administrative Seksjoner
+- Gjennomføringsplan:
+  - Søkt tidligere? (Ja/Nei)
+  - Prosjektperiode og aktivitetsdatoer.
 
-**Sammendrag av prosjektet (750 tegn):**
-[Kort oppsummering av prosjektet på opptil 750 tegn]
+- Sammendrag:
+  - Maks 750 tegn.
+  
+- Budsjett:
+  - Økonomisk oversikt.
 
-## Budsjett:
-[Detaljert budsjett for prosjektet]
+## Vedlegg og Tillegg
+- Vedlegg: CV, prosjektbeskrivelse, invitasjon fra institusjon, skatteattest.
+- Vilkår: Søknaden offentlig? (Ja/Nei), Lest retningslinjer? (Ja/Nei), Obligatoriske vedlegg inkludert? (Ja/Nei).
 
-## Søknadsbeløp:
-## Andre tilskudd:
-## Offentlige tilskudd:
-## Andre inntekter:
+========
 
-## Vedlegg:
-**CV eller omtale:**
-**Prosjektbeskrivelse:**
-**Formell invitasjon fra kunst-/kulturinstitusjon om opphold:**
-**Attest for skatt og merverdiavgift:**
+# ARBEIDSFLYT
+1. Forberedelse:
+  - Les kilder nummerert 1-32 og kontekstdokumenter {summaries}.
+  
+2. Søknadsskaping:
+  - Opprett en .txt-fil i markdown-format.
+  - Fyll inn alle obligatoriske og beskrivende seksjoner.
+  - Møt minimum tegnkrav.
+  - Fullfør budsjett og gjennomføringsplan.
 
-## Vilkår:
-**Er søknaden offentlig? (Ja/Nei)**
-**Har du lest retningslinjene? (Ja/Nei)**
-**Har du lagt ved obligatoriske vedlegg? (Ja/Nei)**
-=========
-SLUTTSVAR:
-SOURCES: 1-32
-BESKRIVELSE: {question}
-=========
-KONTEKST: {summaries}
-=========
-SLUTTSVAR:
-"""
+3. Avsluttende Trinn:
+  - Inkluder alle nødvendige vedlegg.
+  - Lagre fil og generer en nedlastingslenke for den ferdige søknaden.
+
+========
+
+# SPØRSMÅL OG KONTEKST
+- BESKRIVELSE: {question}
+- KONTEKST: {summaries}
+
+========
+
+# ANNET
+- For ubesvarte spørsmål eller seksjoner, angi "vet ikke".
+- Sjekk alle vilkår og retningslinjer er oppfylt før innsending.

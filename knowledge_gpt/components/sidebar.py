@@ -1,42 +1,32 @@
 import streamlit as st
 
 def sidebar(on_send_inn_callback):
-    st.sidebar.title("Støtte Jungel")
-    with st.sidebar:
-        st.markdown("---")
-        st.markdown(
-            "## Slik bruker du tjenesten\n"
-            "1. Skriv inn din informasjon\n"
-            "2. Last opp PDF, docx, eller txt fil📄\n"
-            "3. Send inn og få et utkast til søknaden din 💬\n"
-        )
-        
-           # Add a divider
-        st.markdown("---")
-        
- 
-    st.sidebar.markdown("### Velg kulturelle støtteordninger")
+    st.sidebar.title("StøtteJungelen")
 
-    schemes = [
-        "Kulturfond",
-        "Filmfond",
-        "Musikkfond",
-        "Kunstfond"
-    ]
-    
-    selected_schemes = st.sidebar.multiselect(
-        " ",
-        schemes
+    st.sidebar.markdown(
+        "1. Skriv inn din informasjon\n"
+        "2. Last opp PDF, docx, eller txt fil📄\n"
+        "3. Send inn og få et utkast til søknaden din 💬\n"
     )
-    
-    on_send_inn_callback(selected_schemes)
 
     uploaded_files = st.sidebar.file_uploader(
-        "",
+        "Drag and Drop",
         type=["pdf", "zip", "txt"],
         accept_multiple_files=True,
         help="",
-        key="sidebar_file_uploader"  # unique key
+        key="sidebar_file_uploader"
     )
+
+    schemes = [
+        'Fond for lyd og bilde',
+        'Drammen Kommunes Kunstnerstipend',
+        'Stipend til Internasjonal Kunstnerutveksling'
+    ]
+    selected_schemes = st.sidebar.selectbox("Velg støtteordning", schemes)
     
-    return uploaded_files  # Return uploaded_files
+    with st.sidebar.form(key='send_inn_form'):
+        submit = st.form_submit_button('Send inn')
+
+    on_send_inn_callback(selected_schemes)
+    
+    return uploaded_files, selected_schemes, submit

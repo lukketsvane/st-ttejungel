@@ -8,7 +8,6 @@ from typing import NoReturn
 
 logger = get_logger(__name__)
 
-
 def wrap_doc_in_html(docs: List[Document]) -> str:
     """Wraps each page in document separated by newlines in <p> tags"""
     text = [doc.page_content for doc in docs]
@@ -17,13 +16,11 @@ def wrap_doc_in_html(docs: List[Document]) -> str:
         text = "\n<hr/>\n".join(text)
     return "".join([f"<p>{line}</p>" for line in text.split("\n")])
 
-
 def is_query_valid(query: str) -> bool:
     if not query:
         st.error("Please enter a question!")
         return False
     return True
-
 
 def is_file_valid(file: File) -> bool:
     if (
@@ -35,12 +32,10 @@ def is_file_valid(file: File) -> bool:
         return False
     return True
 
-
 def display_file_read_error(e: Exception) -> NoReturn:
     st.error("Error reading file. Make sure the file is not corrupted or encrypted")
     logger.error(f"{e.__class__.__name__}: {e}")
     st.stop()
-
 
 @st.cache_data(show_spinner=False)
 def is_open_ai_key_valid(openai_api_key) -> bool:
@@ -49,7 +44,7 @@ def is_open_ai_key_valid(openai_api_key) -> bool:
         return False
     try:
         openai.ChatCompletion.create(
-            model="gpt-3.5-turbo-16k",
+            model="gpt-4",
             messages=[{"role": "user", "content": "test"}],
             api_key=openai_api_key,
         )

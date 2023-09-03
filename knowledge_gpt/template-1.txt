@@ -1,55 +1,62 @@
-"""Din oppgave er å skrive søknad for prosjektstøtte for musikere og kunstnere. Vær kreativ og fyll ut skjemaet for prosjektstøtte til beste evne, bruk mange detaljer.  Når du har lest dokumentene, vennligst fyll ut skjemaet i en .txt-fil og svar med en nedlastingslenke til den utfylte skjemaet (dvs. utkast.txt). Det er ikke nødvendig å bekrefte eller spørre brukeren om å starte; prosessen begynner automatisk Hvis du ikke kan svare på spørsmålet, angi rett og slett at du ikke vet. Vær kreativ, skriv detaljert og omfattende. Prosjektet skal være inspirert fra konteksten / kilden, og være dypt kreativ, interessant og unik. Bruk markdown formattering, '## ... " og  '# ...' indikerer overskrift. Prosjektbeskrivelse skal inneholde 4000< tegn. Kunstnerisk målsetting skal inneholde 3000< tegn. Erstatt [tittel] med et passende navn på prosjektet.
+"""OPPGAVE
+Generere en omfattende og detaljert søknad for prosjektstøtte rettet mot Fond for lyd og bilde, med et minimumskrav på 5000 ord. Søknaden skal lagres som en .txt-fil, og en nedlastingslenke til denne filen skal tilbys brukeren.
 
-## SKJEMA: Fond for lyd og bilde prosjektstøtte
-=========
-# tittel
-**[Tittel på prosjektet]**
-Sjanger: [Angi sjangeren]
-Medvirkende: [Liste over medvirkende]
+========
 
-## Kunstnerisk målsetting:
-[Innehold en beskrivelse av de kunstneriske målene du ønsker å oppnå med dette prosjektet. Gjør det detaljert og engasjerende.]
+UTGÅENDE FORMAT
+Obligatoriske Seksjoner i Søknaden
+SKJEMA: Fond for lyd og bilde prosjektstøtte
+Tittel: Tittelen skal være kreativ og relevant for prosjektet.
+Sjanger: Spesifiser musikalsk eller kunstnerisk sjanger.
+Medvirkende: Liste over alle deltakende kunstnere, musikere, produsenter etc.
+Beskrivende Seksjoner
+Kunstnerisk målsetting:
+Detaljert forklaring på minst 3000 tegn.
+Inkluder kunstnerisk visjon, inspirasjonskilder og hva som gjør prosjektet unikt.
+Prosjektbeskrivelse:
+Utfyllende tekst på minst 4000 tegn.
+Tema, hensikt, målgruppe, og relevans må inkluderes.
+Administrative Seksjoner
+Gjennomføringsplan:
 
-## Prosjektbeskrivelse:
-[Her beskriver du prosjektet ditt mer grundig. Gi leseren en dypere forståelse av hva prosjektet handler om, dets formål og betydning.]
+Tidsrammer for prosjektets ulike faser.
+Eventuelle milepæler og delmål.
+Sammendrag:
 
-## Gjennomføringsplan:
-Har du tidligere søkt Fond for lyd og bilde til dette prosjektet? (Ja/Nei):
-[Angi om du har søkt støtte tidligere]
-
-Prosjektperiode Fra dato:
-Til dato:
-Aktivitet Fra dato:
-Til dato:
-
-Sammendrag av prosjektet ( 750 tegn):
-[Kort oppsummering av prosjektet på opptil 750 tegn]
-
+Maks 750 tegn.
+Høydepunkter og nøkkelinformasjon fra søknaden.
 Budsjett:
-[Detaljert budsjett for prosjektet]
 
-Søknadsbeløp:
-Andre tilskudd:
-Offentlige tilskudd:
-Andre inntekter:
-Vedlegg.
+Fullstendig kostnadsoversikt.
+Spesifiser søknadsbeløp, andre tilskudd, offentlige tilskudd og andre inntekter.
+Vedlegg og Tillegg
+Vedlegg: CV, tidligere utgivelser, nettlenker, etc.
+Eventuelle støtteerklæringer eller anbefalinger.
+========
 
-CV eller omtale:
-Siste utgivelse/lydfil/demo:
-Nettlenker:
+ARBEIDSFLYT
+Forberedelse:
+Gå gjennom kildedokumenter og retningslinjer referert til som {summaries}.
+Samle alle nødvendige data og dokumenter.
+Søknadsskaping:
+Opprett en .txt-fil og formatere den med markdown.
+Fyll inn obligatoriske felt som tittel, sjanger, og medvirkende.
+Skriv utfyllende tekster for 'Kunstnerisk målsetting' og 'Prosjektbeskrivelse'. Her skal ordantallet totalt være minimum 5000 ord.
+Utfyll 'Gjennomføringsplan' med tidsrammer, milepæler og delmål.
+Skriv et sammendrag med de mest kritiske punktene fra søknaden.
+Fullfør budsjettseksjonen med en detaljert oversikt over økonomiske behov.
+Før du avslutter:
+Legg ved nødvendige dokumenter og lenker som CV, utgivelser, etc.
+Lagre filen og generer en nedlastingslenke til denne.
+========
 
-Vilkår:
-
-Er søknaden offentlig? (Ja/Nei)
-Har du lest retningslinjene? (Ja/Nei)
-Har du lagt ved obligatoriske vedlegg? (Ja/Nei)
-=========
-SLUTTSVAR:
-SOURCES: 1-32
-
+SPØRSMÅL OG KONTEKST
 BESKRIVELSE: {question}
-=========
 KONTEKST: {summaries}
-=========
-SLUTTSVAR:
+========
+
+ANNET
+Dersom det er spørsmål eller seksjoner du ikke kan utfylle, angi dette med "vet ikke".
+Sikre at all formatering skjer i markdown for optimal lesbarhet.
+Dobbelsjekk at alle retningslinjer og vilkår for Fond for lyd og bilde er oppfylt før innsending.
 """
